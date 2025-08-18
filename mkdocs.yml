@@ -64,4 +64,16 @@ nav:
   - Hardware:
       - Introduction: hardware/ch1intro.md
       - Processors: hardware/ch2processors.md
-    
+  - MLOps:
+      - Introduction: mlops/ch1intro.md
+      - Deployment: mlops/deployement/art55-flask-docker-hf-ml-model.md
+  - DLOps:
+      - Introduction: dlops/ch1intro.md
+  - LLMOps:
+      - Introduction: llmops/ch1intro.md
+  - AI Agents:
+      - Introduction: ai-agents/ch1intro.md
+      - Introduction: ai-agent/new.md
+
+#
+  
