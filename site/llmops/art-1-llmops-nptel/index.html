@@ -1,0 +1,2299 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../ch1intro/">
+      
+      
+      
+      <link rel="icon" href="../../assets/favicon.jpg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>Production - AI Systems</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Libre Baskerville";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mlops-for-llms" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="AI Systems" class="md-header__button md-logo" aria-label="AI Systems" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 14.27 10.64 13A11.24 11.24 0 0 0 5 10.18v6.95c2.61.34 5 1.34 7 2.82 2-1.48 4.39-2.48 7-2.82v-6.95c-2.16.39-4.09 1.39-5.64 2.82M19 8.15c.65-.1 1.32-.15 2-.15v11c-3.5 0-6.64 1.35-9 3.54C9.64 20.35 6.5 19 3 19V8c.68 0 1.35.05 2 .15 2.69.41 5.1 1.63 7 3.39 1.9-1.76 4.31-2.98 7-3.39M12 6c.27 0 .5-.1.71-.29.19-.21.29-.44.29-.71s-.1-.5-.29-.71C12.5 4.11 12.27 4 12 4s-.5.11-.71.29c-.18.21-.29.45-.29.71s.11.5.29.71c.21.19.45.29.71.29m2.12 1.12a2.997 2.997 0 1 1-4.24-4.24 2.997 2.997 0 1 1 4.24 4.24"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI Systems
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Production
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ajeetkbhardwaj/ai-systems" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Ajeet Kumar
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../hardware/ch1intro/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Hardware
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../mlops/ch1intro/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  MLOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../dlops/ch1intro/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  DLOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../ch1intro/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  LLMOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../multimodel/multimodel.md" class="md-tabs__link">
+          
+  
+  
+    
+  
+  MultiModel
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ai-agents/ch1intro.md" class="md-tabs__link">
+          
+  
+  
+    
+  
+  AI Agents
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="AI Systems" class="md-nav__button md-logo" aria-label="AI Systems" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 14.27 10.64 13A11.24 11.24 0 0 0 5 10.18v6.95c2.61.34 5 1.34 7 2.82 2-1.48 4.39-2.48 7-2.82v-6.95c-2.16.39-4.09 1.39-5.64 2.82M19 8.15c.65-.1 1.32-.15 2-.15v11c-3.5 0-6.64 1.35-9 3.54C9.64 20.35 6.5 19 3 19V8c.68 0 1.35.05 2 .15 2.69.41 5.1 1.63 7 3.39 1.9-1.76 4.31-2.98 7-3.39M12 6c.27 0 .5-.1.71-.29.19-.21.29-.44.29-.71s-.1-.5-.29-.71C12.5 4.11 12.27 4 12 4s-.5.11-.71.29c-.18.21-.29.45-.29.71s.11.5.29.71c.21.19.45.29.71.29m2.12 1.12a2.997 2.997 0 1 1-4.24-4.24 2.997 2.997 0 1 1 4.24 4.24"/></svg>
+
+    </a>
+    AI Systems
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ajeetkbhardwaj/ai-systems" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Ajeet Kumar
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Hardware
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Hardware
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/ch1intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/ch2processors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Processors
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    MLOps
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            MLOps
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mlops/ch1intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mlops/deployement/art55-flask-docker-hf-ml-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    DLOps
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            DLOps
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dlops/ch1intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    LLMOps
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            LLMOps
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch1intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Production
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Production
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-llms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding LLMs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#llm-building-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      LLM Building Process
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-challenges-of-llms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Challenges of LLMs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Challenges of LLMs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-pre-training-stage" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Pre-training Stage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-fine-tuning-stage" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Fine-tuning Stage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-usage-stage" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Usage Stage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-traning-data-challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-Traning : Data Challenges
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-training-compute-challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-Training : Compute Challenges
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#versioning-in-llms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Versioning in LLMs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Versioning in LLMs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#versioning-for-foundation-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Versioning for Foundation Models :
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#versioning-for-fine-tuned-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Versioning for Fine-Tuned Models
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adapting-git-flow-to-finetuned-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adapting git-flow to finetuned models
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fine-tuning-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fine-Tuning : Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fine-Tuning : Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#challenges-of-testing-llms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Challenges of Testing LLMs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommended-testing-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommended Testing Practices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types-of-tests-for-llms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Types of Tests for LLMs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ci-for-llms" class="md-nav__link">
+    <span class="md-ellipsis">
+      CI for LLMs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CI for LLMs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#specialized-infrastructure-for-llms-ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specialized Infrastructure for LLMs CI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adjusting-reproducibility-expectations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adjusting Reproducibility Expectations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prompt-engineering-in-the-ci-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prompt Engineering in the CI Lifecycle
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#artifact-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Artifact Management
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cd-for-llm-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      CD for LLM Models
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CD for LLM Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cd-for-foundation-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      CD for Foundation Models
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cd-for-finetuned-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      CD for Finetuned Models
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-of-deployed-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage of Deployed Models
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage of Deployed Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-llms-cant-update-themselves-on-the-fly" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why LLMs Can't Update Themselves on the Fly
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-llms-can-do-with-new-data-online-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      What LLMs Can Do with New Data (Online Operations)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llm-usage-lookup-orchestration-is-common" class="md-nav__link">
+    <span class="md-ellipsis">
+      LLM Usage : Lookup + Orchestration is common
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-lookup-and-orchestration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Lookup and Orchestration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-customer-service-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example : Customer Service Agent
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-fine-tuned-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building Fine-tuned model
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#llm-in-production-measuring-llm-accuracy" class="md-nav__link">
+    <span class="md-ellipsis">
+      LLM in Production : Measuring LLM Accuracy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LLM in Production : Measuring LLM Accuracy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lm-evaluation-harness" class="md-nav__link">
+    <span class="md-ellipsis">
+      LM Evaluation Harness
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#imporving-fine-tuned-llm-accuracy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Imporving Fine-tuned LLM Accuracy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prompt-engineering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prompt Engineering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verification-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verification Layer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-usage-of-critique-llms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example - usage of critique LLMs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    MultiModel
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            MultiModel
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../multimodel/multimodel.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    AI Agents
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            AI Agents
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-agents/ch1intro.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-agent/new.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-llms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding LLMs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#llm-building-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      LLM Building Process
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-challenges-of-llms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Challenges of LLMs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Challenges of LLMs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-pre-training-stage" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Pre-training Stage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-fine-tuning-stage" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Fine-tuning Stage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-usage-stage" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Usage Stage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-traning-data-challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-Traning : Data Challenges
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-training-compute-challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-Training : Compute Challenges
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#versioning-in-llms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Versioning in LLMs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Versioning in LLMs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#versioning-for-foundation-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Versioning for Foundation Models :
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#versioning-for-fine-tuned-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Versioning for Fine-Tuned Models
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adapting-git-flow-to-finetuned-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adapting git-flow to finetuned models
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fine-tuning-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fine-Tuning : Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fine-Tuning : Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#challenges-of-testing-llms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Challenges of Testing LLMs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommended-testing-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommended Testing Practices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types-of-tests-for-llms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Types of Tests for LLMs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ci-for-llms" class="md-nav__link">
+    <span class="md-ellipsis">
+      CI for LLMs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CI for LLMs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#specialized-infrastructure-for-llms-ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specialized Infrastructure for LLMs CI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adjusting-reproducibility-expectations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adjusting Reproducibility Expectations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prompt-engineering-in-the-ci-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prompt Engineering in the CI Lifecycle
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#artifact-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Artifact Management
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cd-for-llm-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      CD for LLM Models
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CD for LLM Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cd-for-foundation-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      CD for Foundation Models
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cd-for-finetuned-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      CD for Finetuned Models
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-of-deployed-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage of Deployed Models
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage of Deployed Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-llms-cant-update-themselves-on-the-fly" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why LLMs Can't Update Themselves on the Fly
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-llms-can-do-with-new-data-online-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      What LLMs Can Do with New Data (Online Operations)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llm-usage-lookup-orchestration-is-common" class="md-nav__link">
+    <span class="md-ellipsis">
+      LLM Usage : Lookup + Orchestration is common
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-lookup-and-orchestration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Lookup and Orchestration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-customer-service-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example : Customer Service Agent
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-fine-tuned-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building Fine-tuned model
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#llm-in-production-measuring-llm-accuracy" class="md-nav__link">
+    <span class="md-ellipsis">
+      LLM in Production : Measuring LLM Accuracy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LLM in Production : Measuring LLM Accuracy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lm-evaluation-harness" class="md-nav__link">
+    <span class="md-ellipsis">
+      LM Evaluation Harness
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#imporving-fine-tuned-llm-accuracy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Imporving Fine-tuned LLM Accuracy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prompt-engineering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prompt Engineering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verification-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verification Layer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-usage-of-critique-llms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example - usage of critique LLMs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="mlops-for-llms">MLOps for LLMs<a class="headerlink" href="#mlops-for-llms" title="Permanent link">⚓︎</a></h1>
+<p>Introduction to operations for Large Language Models(LLMs) also called as MLOps for LLMs.</p>
+<p><strong>Objectives</strong></p>
+<ul>
+<li>Model Versioning for base models and fine-tuned variants, CI/CD specifics</li>
+<li>Accuracy, Performance vs Cost tradeoffs, Observability, Security &amp; Governance (Bias, Toxicity, Explainability)</li>
+</ul>
+<p><img alt="1754406531706" src="../image/art-1-llmops-nptel/1754406531706.png" /></p>
+<h3 id="understanding-llms">Understanding LLMs<a class="headerlink" href="#understanding-llms" title="Permanent link">⚓︎</a></h3>
+<p>An LLM is defined as an advanced AI model trained on language datasets, which are primarily text data.</p>
+<p>The model is engineered to predict the next token of text based on the current context captured in a "context window"</p>
+<p>LLMs accept various forms of "multimodal input" such as text, images, audio, and video, which are collectively called "prompts"</p>
+<p>To construct a response, an LLM can use several tools, including Browse the web, executing programs, and accessing a database or data store</p>
+<h3 id="llm-building-process">LLM Building Process<a class="headerlink" href="#llm-building-process" title="Permanent link">⚓︎</a></h3>
+<p>The process of building LLMs involves three main stages:
+Pre-training (Stage 1): This involves training the model on massive datasets, such as data from the worldwide web, to create a foundational model. This stage is performed by large companies and typically happens on a yearly basis due to the scale and cost involved.</p>
+<p>Fine-tuning (Stage 2): In this stage, a pre-trained foundational model is fine-tuned for specific tasks, such as creating a model for the insurance domain. The fine-tuned models can be produced more frequently, on a weekly or monthly basis.</p>
+<p>Usage (Stage 3): This is the final stage where the LLM is used as an API, receiving prompts and providing programmatic responses, such as JSON outputs.</p>
+<p>the capabilities of LLMs are widely publicized, but here our focus will be on operational aspects of working with them, which happens around the LLM.
+<img alt="1754407115341" src="../image/art-1-llmops-nptel/1754407115341.png" /></p>
+<p>The characteristics of classical machine learning (ML) models, deep learning models, and large language models (LLMs) across several key factors.</p>
+<p>Training Time: Classical ML is fast, deep learning is slower, and LLMs, particularly during pre-training, take the longest, often weeks on GPU clusters.</p>
+<p>Model Size: Classical ML models are small, deep learning models are large, and LLMs are extremely large. The speaker notes that this is a key factor in the distinction between proprietary and open models.</p>
+<p>Data and Compute: LLMs demand "web-scale" datasets and require significant GPU support, unlike classical and deep learning models which have lesser requirements.</p>
+<p>Task Flexibility: Classical ML models are task-specific, deep learning models have some generalization, but LLMs are known for their "general-purpose nature" and wide applicability, allowing them to perform various tasks like generating stories or code.</p>
+<p>Explainability: Classical ML is the most explainable, deep learning has less explainability, and LLMs have "absolutely no explainability" beyond token prediction probabilities.</p>
+<p>Inference Speed: Classical ML is very fast, deep learning is relatively fast, but LLMs are "significantly slow" in comparison, even with optimizations.</p>
+<p>Security Risks: The video highlights that LLMs have a significantly larger "attack surface" with new risks such as prompt hijacking and data leakage, compared to classical and deep learning models.</p>
+<p>Transferability: Classical ML has poor transferability, deep learning has moderate transferability, but LLMs have "high transferability" and can perform zero-shot or few-shot learning on new contexts with minimal guidance.</p>
+<p>What is the difference between Open Source vs Open Weights LLM ?</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Feature</th>
+<th style="text-align: left;">Open-Weight LLM</th>
+<th style="text-align: left;">Open-Source LLM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>What is shared?</strong></td>
+<td style="text-align: left;">Only the pre-trained model<strong>weights</strong> (parameters) are made public.</td>
+<td style="text-align: left;">The model<strong>weights</strong>, <strong>source code</strong>, <strong>training algorithms</strong>, and often the <strong>training data</strong> are all publicly available.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Transparency</strong></td>
+<td style="text-align: left;"><strong>Low.</strong> You can see the final, trained model but not the "recipe" used to create it. It's like receiving a compiled program without the source code.</td>
+<td style="text-align: left;"><strong>High.</strong> The entire process is transparent, allowing anyone to inspect, modify, and understand how the model was built and trained.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Reproducibility</strong></td>
+<td style="text-align: left;"><strong>Limited.</strong> Without access to the training data and code, you cannot fully reproduce the model from scratch. You can only verify its performance.</td>
+<td style="text-align: left;"><strong>High.</strong> The entire training process can be replicated by others, which is vital for scientific research and ethical oversight.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Modification</strong></td>
+<td style="text-align: left;">You can fine-tune the model for specific tasks, but you cannot fundamentally change its architecture or retrain it from scratch using the original methodology.</td>
+<td style="text-align: left;">You have full control. You can modify the architecture, change the training algorithms, and adapt every aspect of the model to your needs.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Community</strong></td>
+<td style="text-align: left;">The community can use and fine-tune the model, but their ability to contribute to the core development is limited.</td>
+<td style="text-align: left;">A vibrant community can contribute to every aspect of the project, from bug fixes and new features to documentation and ethical reviews.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Licensing</strong></td>
+<td style="text-align: left;">Often released under licenses that are permissive (e.g., Apache 2.0) but may have restrictions, such as commercial use limitations or requirements for attribution.</td>
+<td style="text-align: left;">Adheres to traditional open-source principles (e.g., MIT, Apache 2.0), granting broad freedoms for use, modification, and redistribution.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-challenges-of-llms">Key Challenges of LLMs<a class="headerlink" href="#key-challenges-of-llms" title="Permanent link">⚓︎</a></h3>
+<p>What are the key challenges in ML, DL and LLMs ?</p>
+<p><img alt="1754407782513" src="../image/art-1-llmops-nptel/1754407782513.png" /></p>
+<p>The challenges of LLMs compared to classical machine learning, breaking them down by the three stages of LLM interaction: pre-training, fine-tuning, and usage.</p>
+<h4 id="1-pre-training-stage">1. Pre-training Stage<a class="headerlink" href="#1-pre-training-stage" title="Permanent link">⚓︎</a></h4>
+<ul>
+<li><strong>Data challenges:</strong> The process requires terabytes of diverse, high-quality text data, which is a significant and costly exercise that only a handful of large companies can undertake.</li>
+<li><strong>Computational resources:</strong> Pre-training demands powerful, specialized hardware like GPU clusters and parallel training techniques to process massive datasets.</li>
+</ul>
+<h4 id="2-fine-tuning-stage">2. Fine-tuning Stage<a class="headerlink" href="#2-fine-tuning-stage" title="Permanent link">⚓︎</a></h4>
+<ul>
+<li><strong>Control and Interpretability:</strong> A key challenge is controlling the fine-tuned model's specific outputs without losing its inherent power to generalize to similar tasks with minimal guidance. It's difficult to guarantee that a fine-tuned model will produce explainable outputs or work on affiliated tasks.</li>
+<li><strong>Continuous Updates:</strong> Fine-tuned models can become outdated quickly because the foundation models they are based on have a "view of the world as of a particular date".</li>
+</ul>
+<h4 id="3-usage-stage">3. Usage Stage<a class="headerlink" href="#3-usage-stage" title="Permanent link">⚓︎</a></h4>
+<ul>
+<li><strong>Latency:</strong> While human-scale latencies may seem acceptable, LLM inference speeds are significantly slower than classical ML models and can become a major issue when integrated into applications that require real-time processing.</li>
+<li><strong>Hallucination Risk:</strong> Unlike classical ML's misclassification, LLMs can generate wrong but confidently stated answers, making it difficult to detect without external fact-checkers or verifiers.</li>
+<li><strong>Model Size:</strong> LLMs are very large, which is why managed LLM services are popular and expensive.</li>
+<li><strong>Security and Abuse:</strong> LLMs face new and numerous security risks, such as prompt injection and data leakage, which are far more prevalent than in classical ML pipelines .</li>
+<li><strong>Ethical and Bias Concerns:</strong> The biases in LLMs are learned from the pre-training datasets, making them deeply embedded. Detecting and mitigating these biases requires addressing the issue at the data collection stage itself.</li>
+</ul>
+<h3 id="pre-traning-data-challenges">Pre-Traning : Data Challenges<a class="headerlink" href="#pre-traning-data-challenges" title="Permanent link">⚓︎</a></h3>
+<p><img alt="1754410144020" src="../image/art-1-llmops-nptel/1754410144020.png" />
+<img alt="1754410659657" src="../image/art-1-llmops-nptel/1754410659657.png" />
+<img alt="1754410854844" src="../image/art-1-llmops-nptel/1754410854844.png" />
+<img alt="1754411040750" src="../image/art-1-llmops-nptel/1754411040750.png" /></p>
+<p>Note : Key operational items related to data and compute in the pretraining stage</p>
+<p>There are alots of challenges involved in the pre-training stage of Large Language Models (LLMs), focusing primarily on data and compute</p>
+<ul>
+<li><strong>Low-quality or noisy data</strong> : We know that LLMs rely on vast amounts of web data for pre-training, this data is often low-quality, noisy, and contains duplicates. Incorrect data can lead to the model learning fake relationships, toxicity, and biases, or even hallucinating facts. Thus we needed to mitigate such thing from the data using The mitigation strategy involving aggressive data cleaning, deduplication, filtering, and quality checks grounded in human-verifiable labels etc.</li>
+<li><strong>Biases and toxicity</strong> : The data can contain embedded biases and toxicity, which, if not addressed, can worsen the problem and make the bias an inherent part of the model. To mitigate this, bias detection and toxicity filtering must be incorporated into the data sourcing pipeline from the beginning, often with a human feedback loop.</li>
+<li><strong>Data imbalance</strong> : Web data is predominantly in the English language and has a strong leaning toward American English contexts, which can lead to data imbalance. This is problematic because half the world's population resides in regions like Southeast Asia and China, where social media usage is high, but this data is often not indexed for LLM pre-training. As a result, models trained on this data may not be proficient in other languages. For example, the video mentions a model assuming women in the medical field are nurses rather than doctors.</li>
+<li><strong>Leakage of Sensitive Information</strong> : LLMs can inadvertently train on sensitive information, such as personal identifiable information (PII), from public repositories. This could result in intellectual property lawsuits or massive fines under regulations like GDPR. The mitigation strategy involves using PII scrubbing tools and carefully selecting curated data sources.</li>
+<li><strong>Outdated or Stale Data</strong> : It's a challenge to keep foundation models updated with new information since retraining them is time-consuming and expensive. Retrieval-Augmented Generation (RAG) can help with this issue.</li>
+<li><strong>Engineering Challenges</strong> : The video also covers the engineering bottleneck of processing data at a large scale. Data ingress can be very slow, causing GPU clusters to be idle while waiting for data . To mitigate this, big data engineering techniques and synthetic data can be used.</li>
+</ul>
+<h3 id="pre-training-compute-challenges">Pre-Training : Compute Challenges<a class="headerlink" href="#pre-training-compute-challenges" title="Permanent link">⚓︎</a></h3>
+<p><img alt="1754411377155" src="../image/art-1-llmops-nptel/1754411377155.png" />
+<img alt="1754411852024" src="../image/art-1-llmops-nptel/1754411852024.png" />
+<img alt="1754411873439" src="../image/art-1-llmops-nptel/1754411873439.png" />
+What are the challenges related to the compute resources during the pre-training stage of Large Language Models (LLMs).</p>
+<ul>
+<li><strong>Memory Bottlenecks:</strong> The large model sizes and batch sizes can exceed the memory of a single GPU, leading to out-of-memory errors in a distributed cluster setup. To mitigate this, frequent checkpointing and compressed floating-point representations (using 16-bit instead of 32-bit) are recommended.</li>
+<li><strong>Checkpointing and Failure Recovery:</strong> Checkpointing is highlighted as a critical practice to avoid significant loss of progress. The speaker emphasizes the need to save progress frequently to reliable, persistent storage so training can be resumed from the last checkpoint in case of failures.</li>
+<li><strong>Compute Inefficiency:</strong> The  suboptimal data pipelines can lead to idle GPU time. This often happens when code is written in a way that doesn't leverage the distributed nature of the cluster. The solution is to use proper big data principles like data and model parallelism, and to optimize data loaders and I/O processes.</li>
+<li><strong>Network Bandwidth:</strong> The distributed nature of LLM training means that multi-node communication can be a bottleneck. The training process is only as fast as the slowest node, so high-bandwidth, low-latency connections between machines are crucial.</li>
+<li><strong>Hyperparameter Sensitivity:</strong> Incorrect hyperparameters, such as learning rates, can lead to wasted computational resources if the model fails to converge effectively. It is recommended to follow best practices and start with conservative settings before scaling up.</li>
+<li><strong>Storage Bottlenecks:</strong> The massive datasets used in pre-training can cause storage issues. A mix of hybrid storage options, like using SSDs for frequent checkpoints and regular disks for other data, is suggested to prevent GPUs from being starved of data.</li>
+</ul>
+<h3 id="versioning-in-llms">Versioning in LLMs<a class="headerlink" href="#versioning-in-llms" title="Permanent link">⚓︎</a></h3>
+<p>Versioning of pretrained and finetuned LLMs, adapting git-flow to LLM development, and testing</p>
+<p>How to apply the mlops techniques like data and model versioning, testing, CI/CD etc in LLM or do we needed some changes for need of LLM ?</p>
+<p>or</p>
+<p>how to apply best practices from classical machine learning (ML) to large language models (LLMs), focusing on versioning, CI/CD, and testing.</p>
+<p><img alt="1754412323123" src="../image/art-1-llmops-nptel/1754412323123.png" />
+<img alt="1754412602957" src="../image/art-1-llmops-nptel/1754412602957.png" /></p>
+<h4 id="versioning-for-foundation-models"><strong>Versioning for Foundation Models</strong> :<a class="headerlink" href="#versioning-for-foundation-models" title="Permanent link">⚓︎</a></h4>
+<p>These models are long-lived and multi-purpose, used across different teams and contexts.</p>
+<ul>
+<li>Versioning for these is similar to stable main branches in Git repositories.</li>
+<li>Data versioning for foundation models needs to be multi-modal, supporting text, video, audio, and images.</li>
+<li>Traditional change detection methods like modification time or checksums are not effective for non-textual data because small changes can be registered as an entirely new file.</li>
+<li>Given the massive size of the datasets and the extensive planning required for pre-training, the speaker recommends that dedicated data versioning tools may not be necessary. Instead, the lineage, checkpointing, and meticulous data curation process for these models should provide sufficient traceability.</li>
+</ul>
+<h4 id="versioning-for-fine-tuned-models">Versioning for Fine-Tuned Models<a class="headerlink" href="#versioning-for-fine-tuned-models" title="Permanent link">⚓︎</a></h4>
+<ul>
+<li>Fine-tuned models are task-specific and require a model-centric versioning approach.</li>
+<li>Unlike classical ML, where the focus is on versioning the code, it makes more sense to version the models themselves due to their large size.</li>
+<li>A critical aspect of fine-tuning is the regular update of data. This updated data is incremental and represents a regular data versioning exercise that can be performed.</li>
+<li>The versioning process for fine-tuned models involves versioning the entire model, including its lineage. This ensures a clear link between data updates, code changes, and the new fine-tuned model versions that are produced.</li>
+<li>The speaker provides a potential scenario where a base foundational model is fine-tuned weekly, with additional optimizations and new varieties being produced over time. All these variations result in new model versions.</li>
+<li>Tools like DVC (Data Version Control) are still useful in this context. The speaker also suggests adapting the Gitflow paradigm for ML projects to be used with fine-tuned models.</li>
+</ul>
+<h4 id="adapting-git-flow-to-finetuned-models">Adapting git-flow to finetuned models<a class="headerlink" href="#adapting-git-flow-to-finetuned-models" title="Permanent link">⚓︎</a></h4>
+<p><img alt="1754413210696" src="../image/art-1-llmops-nptel/1754413210696.png" /></p>
+<p>how to adapt the GitFlow paradigm for fine-tuned Large Language Models (LLMs), a process that differs significantly from classical machine learning (ML) projects.</p>
+<ul>
+<li><strong>Applicability</strong> : GitFlow is not recommended for foundational models because they are rarely updated. However, it is highly applicable for fine-tuned models.</li>
+<li><strong>Artifact Size</strong> : For classical ML, the primary artifacts are code, which is typically in megabytes. For LLMs, the models themselves are large, so this must be considered when using GitFlow.</li>
+<li><strong>Tooling</strong> : DVC (Data Version Control) can be used to checkpoint and version the large fine-tuned models, including their weights and hyperparameters. The code itself is managed in a standard Git repository.</li>
+<li><strong>Release Cycles</strong> :</li>
+<li>Classical ML uses feature-driven releases, allowing for easy rollbacks to a stable branch.</li>
+<li>LLMs require continuous fine-tuning, and the cost of retraining is high. As a result, rolling back might be very expensive or impractical.</li>
+<li><strong>Storage</strong> : While classical ML stores code in a repository (local or remote), LLMs use a combination of different storage systems. Code is stored in a Git repo, but the large models might be stored in dedicated model registries, which often have their own storage systems.</li>
+<li><strong>Branching</strong> :</li>
+<li>Classical ML uses separate branches for features and bug fixes.</li>
+<li>For LLMs, additional branches may be created for new experiments like distillation, quantization, or LoRA (Low-Rank Adaptation).</li>
+<li><strong>Versioning</strong> :</li>
+<li>In classical ML, version tags are attached to each release.</li>
+<li>For LLMs, it's more useful to attach semantic model tags, which helps in tracking which tag corresponds to which model.</li>
+<li><strong>Rollback Strategy</strong> :</li>
+<li>GitFlow allows for easy rollback by simply checking out a previous release branch.</li>
+<li>For LLMs, a full redeployment might be necessary, and you may need to manage checkpoints yourself.</li>
+<li><strong>Governance</strong> : In addition to standard governance practices like code reviews and CI/CD, LLM fine-tuning requires human-in-the-loop audits for bias checking, testing, and dataset tracking.</li>
+</ul>
+<h3 id="fine-tuning-testing">Fine-Tuning : Testing<a class="headerlink" href="#fine-tuning-testing" title="Permanent link">⚓︎</a></h3>
+<p><img alt="1754413782374" src="../image/art-1-llmops-nptel/1754413782374.png" /></p>
+<p>What are the challenges and methods for testing Large Language Models (LLMs) ?</p>
+<h4 id="challenges-of-testing-llms">Challenges of Testing LLMs<a class="headerlink" href="#challenges-of-testing-llms" title="Permanent link">⚓︎</a></h4>
+<ul>
+<li><strong>Nondeterminism:</strong> Unlike traditional software, which produces consistent outputs, LLMs have inherent noise and variability. This means they can produce different answers for the same prompt, making it difficult to use deterministic testing methods.</li>
+<li><strong>Testing Creativity:</strong> The process of an LLM predicting the next token and generating varied responses is similar to human creative thinking, making it difficult to test in a conventional, deterministic way.</li>
+<li><strong>Evolving Performance:</strong> An anecdote is shared about GPT-3.5, which initially showed strong capabilities in areas like math and code generation but then regressed in performance on those same tasks in a later version. This highlights the importance of regression tests.</li>
+</ul>
+<h4 id="recommended-testing-practices">Recommended Testing Practices<a class="headerlink" href="#recommended-testing-practices" title="Permanent link">⚓︎</a></h4>
+<ul>
+<li><strong>Data Validation:</strong> It's essential to validate data used for fine-tuning models to ensure quality and prevent data drift .</li>
+<li><strong>Model Performance Tests:</strong> For factual or numerical data, you can measure accuracy by comparing the LLM's output against known correct answers.</li>
+<li><strong>Regression Tests:</strong> It is crucial to perform regression tests to ensure that new versions of a model do not perform worse on tasks that previous versions excelled at.</li>
+<li><strong>Online Testing:</strong> Unlike software, which can be certified in a CI cycle and be expected to perform the same in production, LLMs need continuous online testing in a production environment.</li>
+<li>Tests should screen for issues like hallucination, toxicity, and consistency in real-time as the model generates responses.</li>
+<li>This is important because prompts from end-users can cause the model to behave unpredictably, a scenario that may not have been captured in the CI stage.</li>
+<li><strong>CI/CD is a must:</strong> The speaker emphasizes that Continuous Integration and Continuous Deployment (CI/CD) is essential for LLM fine-tuning.</li>
+</ul>
+<p><img alt="1754414382170" src="../image/art-1-llmops-nptel/1754414382170.png" /></p>
+<p>Our focus will be on various testing practices essential for LLMs, adapting the concepts from classical ML and software testing.</p>
+<h4 id="types-of-tests-for-llms">Types of Tests for LLMs<a class="headerlink" href="#types-of-tests-for-llms" title="Permanent link">⚓︎</a></h4>
+<ul>
+<li><strong>Unit Tests:</strong> LLMs require specific tests for things like prompt templating and tokenization to ensure the prompts are structured correctly and text is being chunked properly.</li>
+<li><strong>Data Tests:</strong> These are crucial for ensuring data quality and preventing issues like bias, underrepresentation, or overrepresentation . The speaker emphasizes the need to check for biases and maintain data balance.</li>
+<li><strong>Performance Tests:</strong> It is possible to measure traditional metrics like accuracy, F1 score, and recall for LLMs on factual questions where a correct answer is known.</li>
+<li><strong>Drift Tests:</strong> These are important for detecting both data drift and, more uniquely to LLMs, "semantic drift," which refers to changes in the meaning of the responses over time.</li>
+<li><strong>Security Tests:</strong> The speaker notes that security testing is vital for LLMs, as the open nature of language models presents a much larger attack surface compared to structured languages.</li>
+<li><strong>Qualitative Tests:</strong> These are essential for evaluating the model's helpfulness and safety. The speaker provides an example of a chatbot providing a factually correct but completely unhelpful answer, stressing the importance of the model meeting the user's intent. He also mentions the need to test for safety to ensure the model does not provide dangerous instructions.</li>
+</ul>
+<p>Note : In LLM full automation might not be possible, and a "human in the loop" is necessary to provide feedback for testing.</p>
+<h3 id="ci-for-llms">CI for LLMs<a class="headerlink" href="#ci-for-llms" title="Permanent link">⚓︎</a></h3>
+<p><img alt="1754414771805" src="../image/art-1-llmops-nptel/1754414771805.png" />
+<img alt="1754414850573" src="../image/art-1-llmops-nptel/1754414850573.png" />
+<img alt="1754414994318" src="../image/art-1-llmops-nptel/1754414994318.png" />
+the specialized Continuous Integration (CI) process for Large Language Models (LLMs) and compares it to classical machine learning (ML).</p>
+<h4 id="specialized-infrastructure-for-llms-ci">Specialized Infrastructure for LLMs CI<a class="headerlink" href="#specialized-infrastructure-for-llms-ci" title="Permanent link">⚓︎</a></h4>
+<ul>
+<li>LLMs require specialized infrastructure, such as GPUs or TPUs, due to the different type of compute needed.</li>
+<li>Model registries are necessary to store and version large models, and artifact stores are much larger than typical feature stores.</li>
+<li>The infrastructure must be able to efficiently load checkpoints and have access to SSDs for faster loading.</li>
+<li>Evaluation runners need to be able to sample outputs at scale to verify accuracy, consistency, and check for hallucinations, all as part of the CI stage itself, which is a significant change from classical ML.</li>
+</ul>
+<h4 id="adjusting-reproducibility-expectations">Adjusting Reproducibility Expectations<a class="headerlink" href="#adjusting-reproducibility-expectations" title="Permanent link">⚓︎</a></h4>
+<ul>
+<li>Unlike classical ML, where retraining a model yields nearly identical outputs, LLMs can have significant output deviations from slight changes in prompt templates, data sets, or hyperparameters.</li>
+<li>To mitigate this, it's important to track points of randomness and set the random state to a constant value for testing.</li>
+<li>Tracking checkpoints and hyperparameter sensitivity is also crucial, and it's necessary to accept some degree of tolerance for output variations.</li>
+<li>The method for modeling the output during testing should be domain-specific.</li>
+</ul>
+<h4 id="prompt-engineering-in-the-ci-lifecycle">Prompt Engineering in the CI Lifecycle<a class="headerlink" href="#prompt-engineering-in-the-ci-lifecycle" title="Permanent link">⚓︎</a></h4>
+<ul>
+<li>Prompt engineering is a critical interface for LLMs and must be an integral part of the CI cycle.</li>
+<li>Prompts should be treated like code, meaning they need to be versioned and compared across different fine-tuning iterations.</li>
+<li>The CI process should include testing for prompt syntax correctness, verifying output format consistency, and detecting prompt drift.</li>
+</ul>
+<h4 id="artifact-management">Artifact Management<a class="headerlink" href="#artifact-management" title="Permanent link">⚓︎</a></h4>
+<ul>
+<li>Due to the large size of fine-tuned models and other artifacts, the CI process needs to be integrated with model registries and cloud repositories.</li>
+<li>It's important to efficiently cache these artifacts to support multiple jobs.</li>
+<li>The CI process must also track the lineage from the fine-tuned model back to the base model, including where the base model was downloaded from and how it was set up.</li>
+</ul>
+<h3 id="cd-for-llm-models">CD for LLM Models<a class="headerlink" href="#cd-for-llm-models" title="Permanent link">⚓︎</a></h3>
+<p>how Continuous Deployment (CD) can be applied to large foundation models.</p>
+<h4 id="cd-for-foundation-models">CD for Foundation Models<a class="headerlink" href="#cd-for-foundation-models" title="Permanent link">⚓︎</a></h4>
+<p><img alt="1754415350159" src="../image/art-1-llmops-nptel/1754415350159.png" /></p>
+<p>Foundation Models: For foundation models, which are like core software components with downstream dependencies, the CD process should prioritize creating stable, safety-critical releases. The git flow main branch is recommended as a suitable vehicle for disseminating these models.</p>
+<h4 id="cd-for-finetuned-models">CD for Finetuned Models<a class="headerlink" href="#cd-for-finetuned-models" title="Permanent link">⚓︎</a></h4>
+<p><img alt="1754415404784" src="../image/art-1-llmops-nptel/1754415404784.png" />
+Fine-tuned Models: Fine-tuned models, which are built on top of foundation models, are released more frequently. Here, the focus of the CD should be on speed and iteration, similar to conventional software development.</p>
+<p>Gitflow: The video suggests using a Gitflow technique adapted for LLMs. The main branch is used for foundation models, while the release branch is used for fine-tuned models. Experimental fine-tuning variations can be worked on in separate ephemeral branches before being merged back into the release branch via a merge or pull request</p>
+<p>CI for LLMs, CD for foundation and finetuned models, Typical LLM usage patterns</p>
+<h3 id="usage-of-deployed-models">Usage of Deployed Models<a class="headerlink" href="#usage-of-deployed-models" title="Permanent link">⚓︎</a></h3>
+<p><img alt="1754415461647" src="../image/art-1-llmops-nptel/1754415461647.png" /></p>
+<p>A common misconception is that Large Language Models (LLMs) learn and update themselves as users interact with them. However, this is not the case. The core weights of the model are not updated during a conversation; instead, the LLM uses a <strong>context window</strong> to store and retrieve new information provided by the user.</p>
+<h4 id="why-llms-cant-update-themselves-on-the-fly">Why LLMs Can't Update Themselves on the Fly<a class="headerlink" href="#why-llms-cant-update-themselves-on-the-fly" title="Permanent link">⚓︎</a></h4>
+<ul>
+<li><strong>Frozen Weights</strong> : LLMs are pre-trained and their weights are frozen during inference. They do not have an internal mechanism for self-improvement or learning from new interactions in real time.</li>
+<li><strong>Fine-Tuning Cycle</strong> : To incorporate new data, an LLM must go through a complete fine-tuning cycle, which is a resource-intensive and time-consuming process.</li>
+</ul>
+<h4 id="what-llms-can-do-with-new-data-online-operations">What LLMs Can Do with New Data (Online Operations)<a class="headerlink" href="#what-llms-can-do-with-new-data-online-operations" title="Permanent link">⚓︎</a></h4>
+<p>While LLMs cannot update their core weights on the fly, they can still perform several "online operations" by leveraging the information in their context window:</p>
+<ul>
+<li><strong>Pattern Recognition</strong> : LLMs can spot trends and extrapolate from new examples given within a few-shot context.</li>
+<li><strong>Reasoning with Examples</strong> : They can use a few-shot examples to gain context and perform reasoning tasks.</li>
+<li><strong>Predicting Trends</strong> : To a limited extent, they can predict trends as long as the information fits within the context window, allowing for generalization.</li>
+</ul>
+<h4 id="llm-usage-lookup-orchestration-is-common">LLM Usage : Lookup + Orchestration is common<a class="headerlink" href="#llm-usage-lookup-orchestration-is-common" title="Permanent link">⚓︎</a></h4>
+<p><img alt="1754416378107" src="../image/art-1-llmops-nptel/1754416378107.png" />
+how to augment the limitations of LLMs when working with new data by using common patterns for data lookup and orchestration.</p>
+<h4 id="data-lookup-and-orchestration">Data Lookup and Orchestration<a class="headerlink" href="#data-lookup-and-orchestration" title="Permanent link">⚓︎</a></h4>
+<ul>
+<li><strong>Data Pipeline Integration</strong> : An LLM-powered shopping agent needs real-time inventory data, which changes too frequently to be part of the model's fine-tuning cycle. The correct approach is to integrate the LLM's tooling capabilities with a data pipeline that connects to the inventory database. This makes the LLM usage a facet of a broader software product that includes data lookup from a database.</li>
+<li><strong>Chunking Prompts and Responses</strong> : To effectively retrieve information from large documents, like an insurance policy, the document needs to be "chunked up" and stored in a vector database for Retrieval Augmented Generation (RAG).</li>
+<li><strong>Context Assembly</strong> : This is a data engineering step where various components are assembled to create a single context for the LLM to answer a prompt. These components include the context window, the user query (prompt), instructions from prompt templates, and data chunks from RAG or other lookups.</li>
+<li><strong>Anonymization and Masking</strong> : This is a necessary step because prompts and responses can accidentally include personally identifiable information (PII). Appropriate engineering is required to handle this based on the context.</li>
+<li>Conclusion that using an LLM is similar to using any other API, but with specific considerations. The CI/CD pipeline for a product using LLMs must account for factors like response variation and the need for integrations across various data sources through processes like chunking, tokenization, and assembly.</li>
+</ul>
+<h4 id="example-customer-service-agent">Example : Customer Service Agent<a class="headerlink" href="#example-customer-service-agent" title="Permanent link">⚓︎</a></h4>
+<p><img alt="1754416532369" src="../image/art-1-llmops-nptel/1754416532369.png" />
+How to use an LLM as a customer service agent for a bank.</p>
+<p>How an LLM-powered agent could answer a customer's question, such as why a specific fee was charged. To do this, the agent needs to access several types of information:</p>
+<ul>
+<li><strong>Authentication:</strong> The agent must first confirm it is speaking with the correct customer to prevent unauthorized information access.</li>
+<li><strong>Customer Data:</strong> The agent needs to fetch the customer's recent interaction data from a database.</li>
+<li><strong>Bank Policies:</strong> It also needs to access bank product information and policies for resolving customer questions</li>
+</ul>
+<p>how these different information sources are integrated into the system:</p>
+<ul>
+<li>An <strong>ID module</strong> is exposed as an API that the LLM uses for authentication.</li>
+<li>The LLM must be able to generate and execute SQL queries to fetch customer interaction data from a database.</li>
+<li>Bank product and policy documents (like PDFs) are processed using a Retrieval-Augmented Generation (RAG) approach. The documents are chunked and made available for retrieval when needed.</li>
+</ul>
+<p>In conclusion that building a system with an LLM agent requires integrating all these components like a regular software system.</p>
+<h3 id="building-fine-tuned-model">Building Fine-tuned model<a class="headerlink" href="#building-fine-tuned-model" title="Permanent link">⚓︎</a></h3>
+<ol>
+<li>Data processing - data and it's format is right.</li>
+<li>LLM</li>
+<li>CI/CD aspect of both pre-training and finetuning</li>
+<li>After in Production, The usage of LLM in Inferencing</li>
+<li>Considering all the aspects of the running LLM in production
+   Building a fine-tuned model and focusing on data processing to ensure quality and proper formatting for LLM architectures</li>
+</ol>
+<p>CI/CD (Continuous Integration/Continuous Deployment) aspects for LLMs, specifically the patterns related to pre-training and fine-tuning before an LLM is deployed for inferencing</p>
+<h3 id="llm-in-production-measuring-llm-accuracy">LLM in Production : Measuring LLM Accuracy<a class="headerlink" href="#llm-in-production-measuring-llm-accuracy" title="Permanent link">⚓︎</a></h3>
+<p>What are the best practices and emerging topics in the field
+<img alt="1754471309292" src="../image/art-1-llmops-nptel/1754471309292.png" /></p>
+<p>What are the consideration for running LLMs in a production environment and it is the most a critical aspect for a comprehensive understanding of LLM ops</p>
+<p><strong>Measuring Accuracy :</strong>
+The accuracy as one of the most important attributes of an LLM that defines its usefulness. Accuracy is measured by whether the model's responses are usable, correct, and relevant to the task. Unlike classical machine learning, where accuracy is mathematically verifiable, LLMs have a natural language interface that introduces variability and uncertainty.</p>
+<p><strong>Three Types of LLM Evaluations</strong>
+To understand and measure accuracy, three types of evaluations:</p>
+<p>Benchmarks: You can use either general-purpose or domain-specific benchmarks to test the model's performance.</p>
+<p>Human Evaluation: A human reviews the LLM's output to verify if it meets expectations or is factually accurate.</p>
+<p>LLM as a Judge: Other LLMs can be used to evaluate and critique the output of the current model.</p>
+<h4 id="lm-evaluation-harness">LM Evaluation Harness<a class="headerlink" href="#lm-evaluation-harness" title="Permanent link">⚓︎</a></h4>
+<p><img alt="1754471424535" src="../image/art-1-llmops-nptel/1754471424535.png" /></p>
+<h4 id="imporving-fine-tuned-llm-accuracy">Imporving Fine-tuned LLM Accuracy<a class="headerlink" href="#imporving-fine-tuned-llm-accuracy" title="Permanent link">⚓︎</a></h4>
+<p><img alt="1754471927233" src="../image/art-1-llmops-nptel/1754471927233.png" /></p>
+<p>Improving LLM Accuracy
+There are four effective ways to improve the accuracy of a fine-tuned LLM:</p>
+<p>Post-training: A catch-all term for techniques applied after a fine-tuned model is produced to improve its accuracy without changing its weights.</p>
+<p>Supervised fine-tuning: Providing small sets of ideal input-output pairs to serve as a strong anchor for the LLM to learn from.</p>
+<p>Direct preference optimization: Giving the LLM multiple possible outputs but indicating which one is preferred to guide its learning.</p>
+<p>Reinforcement learning: Using feedback to reward the model for desired behavior.</p>
+<p>Prompt engineering: This involves using well-structured prompts. The speaker will discuss this in a later section of the video.</p>
+<p>Lookups from RAG documents: Using Retrieval-Augmented Generation (RAG) to fetch information from known, factually correct sources. The LLM uses this information in its context window to provide accurate answers, thereby controlling hallucinations and improving overall accuracy.</p>
+<p>Verification layers: Adding separate layers or APIs that check an LLM's response for compliance with factual accuracy or security policies. The speaker will elaborate on this in a subsequent section.</p>
+<h4 id="prompt-engineering">Prompt Engineering<a class="headerlink" href="#prompt-engineering" title="Permanent link">⚓︎</a></h4>
+<p><img alt="1754472548116" src="../image/art-1-llmops-nptel/1754472548116.png" /></p>
+<p>Prompt engineering, a method for improving LLM accuracy by treating prompts with the same seriousness as code.</p>
+<p><strong>Prompt Engineering Concepts</strong>
+It emphasizes that prompts are not just unstructured text; they are powerful tools that can significantly influence an LLM's behavior. Therefore, they should be treated with the same engineering principles as code, including versioning, control, and using DevOps and CI/CD practices. A well-tuned prompt is also closely tied to the specific model it's running on, meaning the same prompt may perform differently on another fine-tuned model.</p>
+<p><strong>Engineering for Prompts</strong>
+To manage and control prompts effectively, the video suggests using prompt templates. These templates provide a structured framework for prompts while allowing for the parameterization of specific data points. This helps control the alignment between the prompt and the backend model, preventing the use of a prompt designed for one model on another. Templates also enable enhanced security control and allow for the tracking of usage and responses for governance purposes.</p>
+<p>DSPy as an open-source project that provides a Domain-Specific Language (DSL) for prompts. This framework aims to add structure to prompts without sacrificing their natural language feel, allowing for better optimization and control</p>
+<p>Declarative - What needed to be done
+Procedural - How needed to be done</p>
+<p>Once the prompt is defined using these structures then it can organize those structure for the prompt in such a way that it is optimized prompt.</p>
+<h4 id="verification-layer">Verification Layer<a class="headerlink" href="#verification-layer" title="Permanent link">⚓︎</a></h4>
+<p><img alt="1754473308577" src="../image/art-1-llmops-nptel/1754473308577.png" />
+<strong>Verification Layers</strong>
+Purpose: The verification layers as a method to improve LLM accuracy. This is a separate layer that takes the LLM's response and checks it for compliance with factual accuracy or security policies. This layer can act as an API that invokes the LLM, processes the response, and then provides a verified output.</p>
+<p>Methods of Verification: There are several methods for verification, including:</p>
+<ol>
+<li>RAG Lookup: Performing a lookup against Retrieval-Augmented Generation (RAG) documents to ensure the LLM's response is factually correct.</li>
+<li>Critique LLM: Using a second, more powerful LLM to critique the response of the primary LLM for factual inconsistencies.</li>
+<li>Static Rules: Using static rules to check the format or output of the LLM's response.</li>
+</ol>
+<p>An example of a critique LLM is given, where a verifier LLM checks a primary LLM's answer against an original PDF to verify its factual accuracy</p>
+<h4 id="example-usage-of-critique-llms">Example - usage of critique LLMs<a class="headerlink" href="#example-usage-of-critique-llms" title="Permanent link">⚓︎</a></h4>
+<p><img alt="1754473341297" src="../image/art-1-llmops-nptel/1754473341297.png" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../ch1intro/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Introduction">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Introduction
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 Ajeet Kumar
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://ajeetkbhardwaj.github.io/" target="_blank" rel="noopener" title="ajeetkbhardwaj.github.io" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/ajeetkumar09/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["header.autohide", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

@@ -71,6 +71,9 @@ nav:
       - Introduction: dlops/ch1intro.md
   - LLMOps:
       - Introduction: llmops/ch1intro.md
+      - Production : llmops/art-1-llmops-nptel.md
+  - MultiModel:
+      - Introduction: multimodel/multimodel.md
   - AI Agents:
       - Introduction: ai-agents/ch1intro.md
       - Introduction: ai-agent/new.md
